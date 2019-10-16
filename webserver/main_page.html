@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="HACK-T TEAM">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+
+    <title>HACK-T</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"; rel="stylesheet">
+
+    <style>
+      body {padding-top: 50px; padding-bottom: 20px; background: url(/theme.jpg); background-size: cover; color: white;}
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <form class="navbar-form navbar-center">
+         <p class="navbar-brand";>HACK-T TEAM</p>
+      </form>
+      <form class="navbar-form navbar-right">
+        <a class="btn btn-primary btn-lg" href="/challenge" role="button" id="chall-button">Pass challenge to sign in &raquo;</a>
+        <a class="btn btn-primary btn-lg" href="/secret" role="button">HACK-T private page &raquo;</a>
+      </form>
+    </nav>
+
+    <hr>
+
+    <center><h2>HACK-T TEAM: a group of Australian hackers</h2>
+    <b><p>This is a page that we constantly update daily. It provides you will vital information that is going on in our hackers community.</p> 
+    <p>The release of new programs,
+      viruses,  and zero days will be in detail here. You should be in the habit of visiting this page a few times a week to keep up with what is happening.</p> 
+    <p>On the other hand, we do not have the habit of providing sensitive information to anyone.</p>
+    <p>In order to access important information you should prove that you are one of us and have the key, which all members of HACK-T TEAM share. This key will help you to pass the challenge and authentificate on the server.</p>
+    <p>Good luck and happy hacking</p></b></center>
+
+      <hr>
+
+      <footer>
+        <p>&copy; made by Chip in 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script type="text/javascript">
+      var req = new XMLHttpRequest();
+      req.open('HEAD', "/", true);
+      req.onreadystatechange = function()
+      {
+        if ((req.readyState == 4) && (req.getResponseHeader('ajax-parameter') == "True")
+        {
+          document.getElementById("chall-button").disabled = true;
+        }
+      }
+      req.send(null);
+    </script>   
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- Pahom was here! 777 and green elephant forever!-->
+  </body>
+</html>

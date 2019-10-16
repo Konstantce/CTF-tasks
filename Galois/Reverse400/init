@@ -1,0 +1,11 @@
+#!/bin/bash
+
+nasm -f elf64 -o ./antiVM.o ./antiVM.asm
+strip --discard-all ./antiVM.o
+gcc -std=c99 -D_GNU_SOURCE -c ./GROUPS_REVERSE.c -o ./reverse400.o
+gcc -o ./reverse400jury ./reverse400.o ./antiVM.o
+gcc -std=c99 -D ANTIVM -D_GNU_SOURCE -c ./GROUPS_REVERSE.c -o ./reverse400.o
+strip --strip-debug ./reverse400.o
+gcc -o ./reverse400 ./reverse400.o ./antiVM.o -g1
+strip --strip-unneeded ./reverse400
+chmod u+s ./reverse400

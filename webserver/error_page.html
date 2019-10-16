@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="HACK-T TEAM">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico?">
+
+    <title>Warning</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"; rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style>
+      body {padding-top: 50px; padding-bottom: 20px; background: url(/theme.jpg); background-size: cover; color: white;}
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <form class="navbar-form navbar-center">
+         <p class="navbar-brand"; id="warning";></p>
+      </form>
+      <form class="navbar-form navbar-right">
+        <a class="btn btn-primary btn-lg" href="/" role="button">Return on the main page &raquo;</a>
+      </form>
+    </nav>
+
+    <hr>
+
+    <footer>
+      <p>&copy;made by Chip in 2015</p>
+    </footer>
+
+    <script type="text/javascript">
+      var req = new XMLHttpRequest();
+      req.open('HEAD', "/", true);
+      req.onreadystatechange = function()
+      {
+        if (req.readyState == 4)
+        {
+          document.getElementById("warning").innerHTML = req.getResponseHeader('ajax-parameter');
+        }
+      }
+      req.send(null);
+    </script>   
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script document.
+  </body>
+</html>

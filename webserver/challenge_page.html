@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="HACK-T TEAM">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico?">
+
+    <title>Challenge</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"; rel="stylesheet">
+
+    <style>
+      body {padding-top: 50px; padding-bottom: 20px; background: url(/theme.jpg); background-size: cover; color: white;}
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/clock.js"></script>
+    <link rel="stylesheet" href="/clock.css">  
+  </head>
+  
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <form class="navbar-form navbar-center">
+         <p class="navbar-brand message";>Complete the challenge in 15 seconds!</p>
+      </form>
+      <form class="navbar-form navbar-right">
+        <a class="btn btn-primary btn-lg" href="/challenge" role="button" id="again">Start another challenge &raquo;</a>
+        <a class="btn btn-primary btn-lg" href="/" role="button">Return on the main page &raquo;</a>
+      </form>
+    </nav>
+
+    <hr>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <p class="clock"></p>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div><big><strong>Your challenge is: </strong><div id="challenge"></div></big></div>
+          </div>
+          <form class="form-group"; name = "response" onsubmit="return postquery(self)">
+            <input type="response;" placeholder="response"; class="form-control"; maxlength="64"; required>
+            <br>
+            <button type="submit"; class="btn btn-success"; id = "check-button";>Check</button>
+            <button type="reset" class="btn btn-primary";>Reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type = "text/javascript">
+      document.getElementById("check-button").disabled = false;
+    </script>
+
+    <script type="text/javascript">
+      var req = new XMLHttpRequest();
+      req.open('HEAD', "/", true);
+      req.onreadystatechange = function()
+      {
+        if (req.readyState == 4)
+        {
+          document.getElementById("challenge").innerHTML = req.getResponseHeader("ajax-parameter");
+        }
+      }
+      req.send();      
+    </script>  
+
+    <script type="text/javascript">
+      function postquery(form)
+      {
+        document.getElementById("check-button").disabled = true;
+        clock.stop();
+        var req = new XMLHttpRequest();
+        req.open('POST', "/challenge", true);
+        req.onreadystatechange = function()
+        {
+          if (req.readyState == 4)
+          {
+            var result = req.getResponseHeader("ajax-parameter");
+            if (result == "true")
+            {
+              $('.message').html("You did it! Now you have access to our secrets.")
+            }
+            else
+            {          
+              $('.message').html("The answer is incorrect. Try again!")
+              document.getElementById("again").disabled = true;
+            }
+          }
+      }
+      req.send();  
+        return false;
+      }
+    </script>
+
+    
+    <hr>
+
+    <footer>
+      <p>&copy;made by Chip in 2015</p>
+    </footer>
+      
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var clock;
+
+      $(document).ready(function()
+      {
+        clock = new FlipClock($('.clock'), 15, {
+          clockFace: 'Counter',
+          autoStart: true,
+          countdown: true,
+          callbacks: {stop: function() {$('.message').html("The time is over"); document.getElementById("check-button").disabled = true;}}
+          });
+      });
+    </script>
+  </body>
+</html>
+
+
+      

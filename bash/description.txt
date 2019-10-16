@@ -1,0 +1,2 @@
+Description: just another super-puper secure shell
+COST: 125 TAGS: reverse
